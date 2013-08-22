@@ -4,7 +4,7 @@ class CreditCard
         raise ArgumentError.new("Please enter a card number with exactly 16 integars")
     end
     @card_number = card_number.to_s
-    @total_sum = 0
+    @totalsum = 0
   end
  
   def check_card
@@ -37,9 +37,9 @@ class CreditCard
 
     @zedd = @new_Array + @array
     @zedd.each do |x|
-      @totalsum = @total_sum + x
+      @totalsum = @totalsum + x
       end
-   if ( @total_sum % 10 == 0)
+   if ( @totalsum % 10 == 0)
       true
     else
       false
