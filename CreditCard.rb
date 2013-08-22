@@ -9,26 +9,40 @@ class CreditCard
  
   def check_card
     @new_Array = []
+    @array = []
+    @zedd = []  
     @new_Array = @card_number.split(//)
     @new_Array.map! { |x| x.to_i }
-    @new_Array.each_with_index.map { |x,y| 
-      if (y % 2 == 0) 
-        x = 2*x
+    @new_Array.each_with_index { |item,index| 
+      if (index % 2 == 0) 
+        @array << (2 * item)
       else
-        x
+        item = item
       end  
      }  
     @new_Array.map! {|x| 
       if (x > 9)
         x = x-9
       else
-        x
+        x = x
       end  
       }
-  
-    @new_Array.each { |x| 
-        @total_sum = @total_sum + x
-    }  
-    @total_sum % 10 == 0
+    @array.map! {|x| 
+      if (x > 9)
+        x = x-9
+      else
+        x = x
+      end  
+      }
+
+    @zedd = @new_Array + @array
+    @zedd.each do |x|
+      @totalsum = @total_sum + x
+      end
+   if ( @total_sum % 10 == 0)
+      true
+    else
+      false
+    end  
   end 
 end
