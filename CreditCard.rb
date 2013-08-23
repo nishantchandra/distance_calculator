@@ -1,7 +1,7 @@
 class CreditCard
    def initialize (card_number)
     unless (card_number.to_s.length == 16 )
-        raise ArgumentError.new("Please enter a card number with exactly 16 integars")
+        raise ArgumentError.new("Error")
     end
     @card_number = card_number.to_s
     @totalsum = 0
@@ -9,24 +9,17 @@ class CreditCard
  
   def check_card
     @new_Array = []
-    @array = []
-    @zedd = []  
+    @array = [] 
     @new_Array = @card_number.split(//)
     @new_Array.map! { |x| x.to_i }
     @new_Array.each_with_index { |item,index| 
       if (index % 2 == 0) 
         @array << (2 * item)
       else
-        item = item
+        @array << item
       end  
      }  
-    @new_Array.map! {|x| 
-      if (x > 9)
-        x = x-9
-      else
-        x = x
-      end  
-      }
+    
     @array.map! {|x| 
       if (x > 9)
         x = x-9
@@ -35,14 +28,14 @@ class CreditCard
       end  
       }
 
-    @zedd = @new_Array + @array
-    @zedd.each do |x|
+    @array.each do |x|
       @totalsum = @totalsum + x
       end
    if ( @totalsum % 10 == 0)
-      true
+       true
     else
       false
     end  
   end 
 end
+
